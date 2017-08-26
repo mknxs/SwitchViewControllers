@@ -14,6 +14,16 @@
 		70E06B1C1F51A3D00011DFA5 /* SwitchViewControllersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E06B1B1F51A3D00011DFA5 /* SwitchViewControllersTests.swift */; };
 		70E06B281F51A5ED0011DFA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E06B261F51A5ED0011DFA5 /* ViewController.swift */; };
 		70E06B291F51A5ED0011DFA5 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E06B271F51A5ED0011DFA5 /* ViewController.xib */; };
+		70E06B2C1F51AEBA0011DFA5 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E06B2A1F51AEBA0011DFA5 /* TopViewController.swift */; };
+		70E06B2D1F51AEBA0011DFA5 /* TopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E06B2B1F51AEBA0011DFA5 /* TopViewController.xib */; };
+		70E06B301F51AECA0011DFA5 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E06B2E1F51AECA0011DFA5 /* BusinessViewController.swift */; };
+		70E06B311F51AECA0011DFA5 /* BusinessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E06B2F1F51AECA0011DFA5 /* BusinessViewController.xib */; };
+		70E06B341F51AED60011DFA5 /* WorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E06B321F51AED60011DFA5 /* WorldViewController.swift */; };
+		70E06B351F51AED60011DFA5 /* WorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E06B331F51AED60011DFA5 /* WorldViewController.xib */; };
+		70E06B381F51AEEB0011DFA5 /* TechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E06B361F51AEEB0011DFA5 /* TechViewController.swift */; };
+		70E06B391F51AEEB0011DFA5 /* TechViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E06B371F51AEEB0011DFA5 /* TechViewController.xib */; };
+		70E06B3C1F51AEFB0011DFA5 /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E06B3A1F51AEFB0011DFA5 /* SportsViewController.swift */; };
+		70E06B3D1F51AEFB0011DFA5 /* SportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E06B3B1F51AEFB0011DFA5 /* SportsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +48,16 @@
 		70E06B1D1F51A3D00011DFA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70E06B261F51A5ED0011DFA5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		70E06B271F51A5ED0011DFA5 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		70E06B2A1F51AEBA0011DFA5 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		70E06B2B1F51AEBA0011DFA5 /* TopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopViewController.xib; sourceTree = "<group>"; };
+		70E06B2E1F51AECA0011DFA5 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		70E06B2F1F51AECA0011DFA5 /* BusinessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessViewController.xib; sourceTree = "<group>"; };
+		70E06B321F51AED60011DFA5 /* WorldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldViewController.swift; sourceTree = "<group>"; };
+		70E06B331F51AED60011DFA5 /* WorldViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldViewController.xib; sourceTree = "<group>"; };
+		70E06B361F51AEEB0011DFA5 /* TechViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechViewController.swift; sourceTree = "<group>"; };
+		70E06B371F51AEEB0011DFA5 /* TechViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TechViewController.xib; sourceTree = "<group>"; };
+		70E06B3A1F51AEFB0011DFA5 /* SportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportsViewController.swift; sourceTree = "<group>"; };
+		70E06B3B1F51AEFB0011DFA5 /* SportsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SportsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +106,16 @@
 				70E06B121F51A3D00011DFA5 /* Info.plist */,
 				70E06B261F51A5ED0011DFA5 /* ViewController.swift */,
 				70E06B271F51A5ED0011DFA5 /* ViewController.xib */,
+				70E06B2A1F51AEBA0011DFA5 /* TopViewController.swift */,
+				70E06B2B1F51AEBA0011DFA5 /* TopViewController.xib */,
+				70E06B2E1F51AECA0011DFA5 /* BusinessViewController.swift */,
+				70E06B2F1F51AECA0011DFA5 /* BusinessViewController.xib */,
+				70E06B321F51AED60011DFA5 /* WorldViewController.swift */,
+				70E06B331F51AED60011DFA5 /* WorldViewController.xib */,
+				70E06B361F51AEEB0011DFA5 /* TechViewController.swift */,
+				70E06B371F51AEEB0011DFA5 /* TechViewController.xib */,
+				70E06B3A1F51AEFB0011DFA5 /* SportsViewController.swift */,
+				70E06B3B1F51AEFB0011DFA5 /* SportsViewController.xib */,
 			);
 			path = SwitchViewControllers;
 			sourceTree = "<group>";
@@ -184,7 +214,12 @@
 			files = (
 				70E06B111F51A3D00011DFA5 /* LaunchScreen.storyboard in Resources */,
 				70E06B0E1F51A3D00011DFA5 /* Assets.xcassets in Resources */,
+				70E06B391F51AEEB0011DFA5 /* TechViewController.xib in Resources */,
+				70E06B351F51AED60011DFA5 /* WorldViewController.xib in Resources */,
+				70E06B311F51AECA0011DFA5 /* BusinessViewController.xib in Resources */,
 				70E06B291F51A5ED0011DFA5 /* ViewController.xib in Resources */,
+				70E06B2D1F51AEBA0011DFA5 /* TopViewController.xib in Resources */,
+				70E06B3D1F51AEFB0011DFA5 /* SportsViewController.xib in Resources */,
 				70E06B0C1F51A3D00011DFA5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,7 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70E06B381F51AEEB0011DFA5 /* TechViewController.swift in Sources */,
+				70E06B2C1F51AEBA0011DFA5 /* TopViewController.swift in Sources */,
 				70E06B281F51A5ED0011DFA5 /* ViewController.swift in Sources */,
+				70E06B301F51AECA0011DFA5 /* BusinessViewController.swift in Sources */,
+				70E06B341F51AED60011DFA5 /* WorldViewController.swift in Sources */,
+				70E06B3C1F51AEFB0011DFA5 /* SportsViewController.swift in Sources */,
 				70E06B071F51A3D00011DFA5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
