@@ -50,9 +50,20 @@ class ViewController: UIViewController {
         }
     }
     
+    struct TabUISet {
+        var button: UIButton
+        var layoutHeight: NSLayoutConstraint
+        var tab: Tab
+    }
+    
     struct Constants {
         struct Tab {
             static let CornerRadius: CGFloat = 4.0
+            static let BackgroundAlphaActive: CGFloat = 1.0
+            static let BackgroundAlphaInActive: CGFloat = 0.8
+            static let HeightActive: CGFloat = 50
+            static let HeightInActive: CGFloat = 44
+            static let ChangeAnimationDuration: TimeInterval = 0.4
         }
     }
 
@@ -63,21 +74,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var suportsTabButton: UIButton!
     @IBOutlet weak var tabsHolder: UIScrollView!
     
+    @IBOutlet weak var topTabHeight: NSLayoutConstraint!
+    @IBOutlet weak var businessTabHeight: NSLayoutConstraint!
+    @IBOutlet weak var worldTabHeight: NSLayoutConstraint!
+    @IBOutlet weak var techTabHeight: NSLayoutConstraint!
+    @IBOutlet weak var sportsTabHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var tabUnderLine: UIView!
+    
     var viewControllers: [UIViewController] = []
+    var tabUISets: [TabUISet] = []
     var currentTab: Tab = Tab.defaultTab
 
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        [self.topTabButton,
-         self.businessTabButton,
-         self.worldTabButton,
-         self.techTabButton,
-         self.suportsTabButton].forEach { (b) in
-            b?.layer.masksToBounds = true
-            b?.layer.cornerRadius = Constants.Tab.CornerRadius
-        }
-        
         self.setupDetailTabs()
     }
     
@@ -104,7 +114,21 @@ class ViewController: UIViewController {
             return
         }
         
-        let current = Tab.defaultTab
+        
+        let topTab = TabUISet(button: topTabButton, layoutHeight: topTabHeight, tab: .top)
+        let businessTab = TabUISet(button: businessTabButton, layoutHeight: businessTabHeight, tab: .business)
+        let worldTab = TabUISet(button: worldTabButton, layoutHeight: worldTabHeight, tab: .world)
+        let techTab = TabUISet(button: techTabButton, layoutHeight: techTabHeight, tab: .tech)
+        let sportsTab = TabUISet(button: suportsTabButton, layoutHeight: sportsTabHeight, tab: .sports)
+        self.tabUISets = [topTab, businessTab, worldTab, techTab, sportsTab]
+        
+        self.tabUISets.forEach { (set) in
+            let b = set.button
+            b.layer.masksToBounds = true
+            b.layer.cornerRadius = Constants.Tab.CornerRadius
+        }
+        
+        let current = self.currentTab
         self.addContent(forTab: current.leftTab)
         self.addContent(forTab: current)
         self.addContent(forTab: current.rightTab)
@@ -138,7 +162,41 @@ class ViewController: UIViewController {
         }
         return nil
     }
+    
+    func tabUISet(forTab tab: Tab?) -> TabUISet? {
+        if let t = tab {
+            return self.tabUISets.filter({ (ts) -> Bool in
+                return ts.tab == t
+            }).first
+        }
+        return nil
+    }
 
+    func updateTabAppearance(oldTab: Tab, newTab: Tab, animated: Bool = true, completion: ( () -> Void )? = nil) {
+        if oldTab == newTab { return }
+        
+        if let old = self.tabUISet(forTab: oldTab), let new = self.tabUISet(forTab: newTab) {
+            let update = { () -> () in
+                old.button.alpha = Constants.Tab.BackgroundAlphaInActive
+                old.layoutHeight.constant = Constants.Tab.HeightInActive
+                new.button.alpha = Constants.Tab.BackgroundAlphaActive
+                new.layoutHeight.constant = Constants.Tab.HeightActive
+                old.button.superview?.layoutIfNeeded()
+                new.button.superview?.layoutIfNeeded()
+                self.tabUnderLine.backgroundColor = new.button.backgroundColor
+            }
+            
+            if animated {
+                UIView.animate(withDuration: Constants.Tab.ChangeAnimationDuration, animations: update, completion: { (_) in
+                    completion?()
+                })
+            } else {
+                update()
+                completion?()
+            }
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func topButtonAction(_ sender: Any) {
@@ -180,6 +238,8 @@ class ViewController: UIViewController {
             deleteTarget = leftTabSelected ? deleteTarget?.leftTab ?? Tab.lastTab : deleteTarget?.rightTab ?? Tab.firstTab
             addTarget = leftTabSelected ? addTarget?.rightTab ?? Tab.firstTab : addTarget?.leftTab ?? Tab.lastTab
         }
+        
+        self.updateTabAppearance(oldTab: oldTab, newTab: newTab)
         
         self.currentTab = newTab
     }
