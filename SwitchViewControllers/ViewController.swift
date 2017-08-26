@@ -64,6 +64,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tabsHolder: UIScrollView!
     
     var viewControllers: [UIViewController] = []
+    var currentTab: Tab = Tab.defaultTab
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +89,6 @@ class ViewController: UIViewController {
             holder.contentSize = CGSize(width: self.view.bounds.size.width * CGFloat(self.viewControllers.count),
                                         height: h)
         }
-
     }
     
     func setupDetailTabs() {
@@ -139,4 +139,48 @@ class ViewController: UIViewController {
         return nil
     }
 
+    // MARK: - Actions
+    
+    @IBAction func topButtonAction(_ sender: Any) {
+        self.toggleTab(for: .top)
+    }
+    
+    @IBAction func businessButtonAction(_ sender: Any) {
+        self.toggleTab(for: .business)
+    }
+    
+    @IBAction func worldButtonAction(_ sender: Any) {
+        self.toggleTab(for: .world)
+    }
+    
+    @IBAction func techButtonAction(_ sender: Any) {
+        self.toggleTab(for: .tech)
+    }
+    
+    @IBAction func sportsButtonAction(_ sender: Any) {
+        self.toggleTab(for: .sports)
+    }
+    
+    func toggleTab(for newTab: Tab) {
+        let oldTab = self.currentTab
+        if oldTab == newTab { return }
+        
+        let x = self.view.bounds.size.width * CGFloat(newTab.rawValue)
+        self.tabsHolder.contentOffset = CGPoint(x: x, y: 0)
+        
+        // 必要に応じて選択されたタブおよび左右の画面の追加・削除を行う.
+        let leftTabSelected = newTab.isLeftTab(target: oldTab)
+        let distance = newTab.distance(target: oldTab)
+        var deleteTarget = leftTabSelected ? oldTab.rightTab : oldTab.leftTab
+        var addTarget = leftTabSelected ? newTab.leftTab : newTab.rightTab
+        
+        for _ in 0..<distance {
+            self.removeContent(forTab: deleteTarget)
+            self.addContent(forTab: addTarget)
+            deleteTarget = leftTabSelected ? deleteTarget?.leftTab ?? Tab.lastTab : deleteTarget?.rightTab ?? Tab.firstTab
+            addTarget = leftTabSelected ? addTarget?.rightTab ?? Tab.firstTab : addTarget?.leftTab ?? Tab.lastTab
+        }
+        
+        self.currentTab = newTab
+    }
 }

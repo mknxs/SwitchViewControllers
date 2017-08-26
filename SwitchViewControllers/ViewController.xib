@@ -41,6 +41,9 @@
                                     <state key="normal" title="Top">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="topButtonAction:" destination="-1" eventType="touchUpInside" id="Q4L-Sg-5Ic"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAn-M9-dMD" userLabel="Business Button">
                                     <rect key="frame" x="75" y="6" width="74.5" height="44"/>
@@ -52,6 +55,9 @@
                                     <state key="normal" title="Business">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="businessButtonAction:" destination="-1" eventType="touchUpInside" id="8iV-rf-BL8"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIH-OU-e08" userLabel="World Button">
                                     <rect key="frame" x="150.5" y="6" width="74" height="44"/>
@@ -63,6 +69,9 @@
                                     <state key="normal" title="World">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="worldButtonAction:" destination="-1" eventType="touchUpInside" id="Deh-QO-GPI"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeS-o2-920" userLabel="Tech Button">
                                     <rect key="frame" x="225.5" y="6" width="74.5" height="44"/>
@@ -74,6 +83,9 @@
                                     <state key="normal" title="Tech">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="techButtonAction:" destination="-1" eventType="touchUpInside" id="hgj-xJ-94F"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnX-tF-lhc" userLabel="Sports Button">
                                     <rect key="frame" x="301" y="6" width="74" height="44"/>
@@ -85,6 +97,9 @@
                                     <state key="normal" title="Sports">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="sportsButtonAction:" destination="-1" eventType="touchUpInside" id="71H-gJ-heo"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
