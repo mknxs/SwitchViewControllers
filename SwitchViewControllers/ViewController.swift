@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
     enum Tab: Int {
         case top = 0
@@ -85,6 +85,7 @@ class ViewController: UIViewController {
     var viewControllers: [UIViewController] = []
     var tabUISets: [TabUISet] = []
     var currentTab: Tab = Tab.defaultTab
+    var draggingTab: Tab? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -242,5 +243,84 @@ class ViewController: UIViewController {
         self.updateTabAppearance(oldTab: oldTab, newTab: newTab)
         
         self.currentTab = newTab
+    }
+    
+    // MARK: - UIScrollViewDelegate
+    
+    // MARK: - UIScrollViewDelegate
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView == self.tabsHolder else {
+            return
+        }
+        
+        self.draggingTab = nil
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard scrollView == self.tabsHolder else {
+            return
+        }
+        
+        self.draggingTab = self.currentTab
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let dragging = self.draggingTab, scrollView == self.tabsHolder else {
+            return
+        }
+        
+        let originalOffset = self.view.bounds.size.width * CGFloat(dragging.rawValue)
+        let currentOffsetX = scrollView.contentOffset.x
+        
+        let diff = currentOffsetX - originalOffset
+        let distance = abs(diff)
+        let ratio = CGFloat(distance) / self.view.bounds.size.width
+        let heightDiff = Constants.Tab.HeightActive - Constants.Tab.HeightInActive
+        
+        if let destination = diff < 0 ? draggingTab?.leftTab : draggingTab?.rightTab {
+            guard let draggingSet = self.tabUISet(forTab: dragging), let destinationSet = self.tabUISet(forTab: destination) else {
+                return
+            }
+            
+            if ratio > 1.0 {
+                self.draggingTab = destination
+                return
+            }
+            
+            
+            // 画面半分以上スクロールした場合は次のページに切り替わったものとみなす
+            if ratio > 0.5 {
+                if (self.currentTab != destination) {
+                    if destination.isLeftTab(target: dragging) {
+                        self.removeContent(forTab: dragging.rightTab)
+                        if !destination.isFirstTab {
+                            self.addContent(forTab: destination.leftTab)
+                        }
+                    } else {
+                        self.removeContent(forTab: dragging.leftTab)
+                        if !destination.isLastTab {
+                            self.addContent(forTab: destination.rightTab)
+                        }
+                    }
+                    self.currentTab = destination
+                }
+            } else {
+                if (self.currentTab == destination) {
+                    if destination.isLeftTab(target: dragging) {
+                        self.removeContent(forTab: destination.leftTab)
+                        if !dragging.isLastTab {
+                            self.addContent(forTab: dragging.rightTab)
+                        }
+                    } else {
+                        self.removeContent(forTab: destination.rightTab)
+                        if !dragging.isFirstTab {
+                            self.addContent(forTab: dragging.leftTab)
+                        }
+                    }
+                    self.currentTab = dragging
+                }
+            }
+        }
     }
 }
