@@ -288,8 +288,27 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 return
             }
             
+            // スクロール距離の応じてタブの透過度、下線の色、透過度を調整
+            let draggingHeight = draggingSet.layoutHeight
+            let draggingTabButton = draggingSet.button
+            let destinationHeight = destinationSet.layoutHeight
+            let destinationTabButton = destinationSet.button
             
-            // 画面半分以上スクロールした場合は次のページに切り替わったものとみなす
+            draggingHeight.constant = Constants.Tab.HeightActive - (heightDiff * ratio)
+            destinationHeight.constant = Constants.Tab.HeightInActive + (heightDiff * ratio)
+            let alphaDiff = Constants.Tab.BackgroundAlphaActive - Constants.Tab.BackgroundAlphaInActive
+            draggingTabButton.alpha = Constants.Tab.BackgroundAlphaActive - (alphaDiff * ratio)
+            destinationTabButton.alpha = Constants.Tab.BackgroundAlphaInActive + (alphaDiff * ratio)
+            
+            if let currentParts = self.tabUISet(forTab: self.currentTab) {
+                if let line = self.tabUnderLine {
+                    line.backgroundColor = currentParts.button.backgroundColor
+                    line.alpha = Constants.Tab.BackgroundAlphaInActive + (alphaDiff * ratio)
+                }
+            }
+            
+            // 画面半分以上スクロールした場合は次のページに切り替わったものとみなす.
+            // 必要になった画面、不要になった画面の追加、削除を行う.
             if ratio > 0.5 {
                 if (self.currentTab != destination) {
                     if destination.isLeftTab(target: dragging) {
