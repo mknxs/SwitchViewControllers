@@ -11,7 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="SwitchViewControllers" customModuleProvider="target">
             <connections>
+                <outlet property="businessTabButton" destination="lAn-M9-dMD" id="7yj-dB-XdE"/>
+                <outlet property="suportsTabButton" destination="tnX-tF-lhc" id="fNA-Bn-x8M"/>
+                <outlet property="tabsHolder" destination="Fpr-uU-Uto" id="hfX-ok-JRy"/>
+                <outlet property="techTabButton" destination="zeS-o2-920" id="UBa-TN-quO"/>
+                <outlet property="topTabButton" destination="ebn-Gg-8Co" id="dT6-yW-YiF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="worldTabButton" destination="VIH-OU-e08" id="Nhk-7u-Wmo"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
